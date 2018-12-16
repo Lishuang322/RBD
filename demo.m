@@ -34,9 +34,9 @@ useSP = true;           %You can set useSP = false to use regular grid for speed
 doMAEEval = false;       %Evaluate MAE measure after saliency map calculation
 doPRCEval = false;       %Evaluate PR Curves after saliency map calculation
 
-SRC = '/home/hulishuang/workspace/SalBenchmark/Code/matlab/RBD/Oxford';       %Path of input images
-BDCON = '/home/hulishuang/workspace/SalBenchmark/Code/matlab/RBD/output/BDCON';   %Path for saving bdCon feature image
-RES = '/home/hulishuang/workspace/SalBenchmark/Code/matlab/RBD/output/Res';       %Path for saving saliency maps
+SRC = '/data/data-hulishuang/img-dataset/oxford_new';       %Path of input images
+BDCON = '/home/hls/workspace/RBD/BDCON';   %Path for saving bdCon feature image
+RES = '/data/data-hulishuang/img-dataset/saliencymap';       %Path for saving saliency maps
 srcSuffix = '.jpg';     %suffix for your input image
 
 if ~exist(BDCON, 'dir')
@@ -91,7 +91,7 @@ for k=1:length(files)
     optwCtr = SaliencyOptimization(adjcMatrix, bdIds, colDistM, neiSigma, bgWeight, wCtr);
     
     smapName=fullfile(RES, strcat(noSuffixName, '_wCtr_Optimized.png'));
-    SaveSaliencyMap(optwCtr, pixelList, frameRecord, smapName, true);
+%    SaveSaliencyMap(optwCtr, pixelList, frameRecord, smapName, true);
     
 %     %Uncomment the following lines to save more intermediate results.
 %     smapName=fullfile(RES, strcat(noSuffixName, '_wCtr.png'));
@@ -107,7 +107,7 @@ for k=1:length(files)
     [cmbVal, contrast, distribution] = SaliencyFilter(colDistM, posDistM, meanPos);
     
     smapName=fullfile(RES, strcat(noSuffixName, '_SF.png'));
-    SaveSaliencyMap(cmbVal, pixelList, frameRecord, smapName, true);    
+%    SaveSaliencyMap(cmbVal, pixelList, frameRecord, smapName, true);    
 %     smapName=fullfile(RES, strcat(noSuffixName, '_SF_Distribution.png'));
 %     SaveSaliencyMap(distribution, pixelList, frameRecord, smapName, true);    
 %     smapName=fullfile(RES, strcat(noSuffixName, '_SF_Contrast.png'));
@@ -117,12 +117,12 @@ for k=1:length(files)
     geoDist = GeodesicSaliency(adjcMatrix, bdIds, colDistM, posDistM, clipVal);
     
     smapName=fullfile(RES, strcat(noSuffixName, '_GS.png'));
-    SaveSaliencyMap(geoDist, pixelList, frameRecord, smapName, true);
+%    SaveSaliencyMap(geoDist, pixelList, frameRecord, smapName, true);
     
     %% Manifold Ranking
     [stage2, stage1, bsalt, bsalb, bsall, bsalr] = ManifoldRanking(adjcMatrix, idxImg, bdIds, colDistM);
     
-    smapName=fullfile(RES, strcat(noSuffixName, '_MR_stage2.png'));
+    smapName=fullfile(RES, strcat(noSuffixName, '.png'));
     SaveSaliencyMap(stage2, pixelList, frameRecord, smapName, true);
 %     smapName=fullfile(RES, strcat(noSuffixName, '_MR_stage1.png'));
 %     SaveSaliencyMap(stage1, pixelList, frameRecord, smapName, true);
