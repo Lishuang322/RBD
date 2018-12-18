@@ -77,8 +77,8 @@ if __name__ == '__main__':
 
         #write the image in output directory
         io.imsave(os.path.join(pic_path,f),org_img)
-
-        io.imsave(os.path.join(mask_path,f),mask)  
+	    if (args.fill == 'white'):
+        	io.imsave(os.path.join(mask_path,f),mask)  
 
         #io.imsave(os.path.join(args.output,'binary'+f),img_closing)
 
