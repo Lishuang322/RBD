@@ -6,6 +6,7 @@ from skimage.morphology import closing,square
 import numpy as np
 import random
 from MMCQ import MMCQ
+#python smear.py -s /data/data-hulishuang/img-dataset/saliencymap -d /data/data-hulishuang/img-dataset/oxford_new -t 225 -f color -o /data/data-hulishuang/img-dataset/oxford_smeared/color/t225_p400
 if __name__ == '__main__':
     #only image regions greater than MAX_AREA pixels will be smeared
     MAX_AREA = 400
@@ -77,8 +78,8 @@ if __name__ == '__main__':
 
         #write the image in output directory
         io.imsave(os.path.join(pic_path,f),org_img)
-	    if (args.fill == 'white'):
-        	io.imsave(os.path.join(mask_path,f),mask)  
+        if (args.fill == 'white'):
+            io.imsave(os.path.join(mask_path,f),mask)  
 
         #io.imsave(os.path.join(args.output,'binary'+f),img_closing)
 

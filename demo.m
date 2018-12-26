@@ -34,9 +34,9 @@ useSP = true;           %You can set useSP = false to use regular grid for speed
 doMAEEval = false;       %Evaluate MAE measure after saliency map calculation
 doPRCEval = false;       %Evaluate PR Curves after saliency map calculation
 
-SRC = '/data/data-hulishuang/img-dataset/oxford_new';       %Path of input images
+SRC = '/data/data-hulishuang/img-dataset/holiday/picture';       %Path of input images
 BDCON = '/home/hls/workspace/RBD/BDCON';   %Path for saving bdCon feature image
-RES = '/data/data-hulishuang/img-dataset/saliencymap';       %Path for saving saliency maps
+RES = '/data/data-hulishuang/img-dataset/holiday/saliencymap';       %Path for saving saliency maps
 srcSuffix = '.jpg';     %suffix for your input image
 
 if ~exist(BDCON, 'dir')
